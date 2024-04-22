@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/components/header"></th:block>
+
+<body>
+<main class="container">
+    <h2 class="text-center">Create New Book</h2>
+    <form role="form" method="post" th:action="@{/book/new_book}" th:object="${book}">
+        <div class="row">
+            <div class="form-group col">
+                <label for="sbn">Book SBN</label>
+                <input type="text" class="form-control" id="sbn" name="Sbn" th:field="*{sbn}" required>
+            </div>
+            <div class="form-group col">
+                <label for="Title">Book Title</label>
+                <input type="text" class="form-control" id="Title" name="Title" th:field="*{title}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label for="bookCategory">Book Category</label>
+                <select class="form-control" id="bookCategory" name="bookCategory" th:field="*{bookCategory}" required>
+                    <th:block th:each="bookCategory :${bookCategories}">
+                        <option th:value="${bookCategory}">[[${bookCategory}]]</option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="form-group col">
+                <label for="OriginCountry">Book Origin Country</label>
+                <select class="form-control" id="OriginCountry" name="bookOrigin" th:field="*{originCountry}" required>
+                    <th:block th:each="countryOfOrigin :${allCountries}">
+                        <option th:value="${countryOfOrigin.countryName}">[[${countryOfOrigin.CountryName}]]</option>
+                    </th:block>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</main>
+</body>
+</html>

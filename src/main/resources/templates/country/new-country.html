@@ -1,0 +1,22 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/components/header"></th:block>
+
+<body>
+<main class="container">
+    <h2 class="text-center">Create New Country</h2>
+    <form role="form" method="post" th:action="@{/country/new_country}" th:object="${country}">
+        <div class="row">
+            <div class="form-group col">
+                <label for="countryCode">Country Code</label>
+                <input type="text" class="form-control" id="countryCode" name="countryCode" th:field="*{countryCode}" required>
+            </div>
+            <div class="form-group col">
+                <label for="countryName">Country Name</label>
+                <input type="text" class="form-control" id="countryName" name="countryName" th:field="*{countryName}" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</main>
+</body>
+</html>
